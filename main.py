@@ -45,6 +45,7 @@ def sendcmd(cmd):
             return False
 
 def setMode(bw, sf):
+    print("setMode()", bw, sf)
     lr.write('config\r\n')
     lr.s.flush()
     sleep(0.2)
