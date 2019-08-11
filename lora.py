@@ -1,9 +1,7 @@
-# ソフトシリアル経由でLoRaモジュールを読む
-
 from serial import Serial
 import RPi.GPIO as GPIO
-import struct
-import time
+from struct import unpack
+from time import sleep
 
 ResetPin = 12
 
@@ -19,7 +17,7 @@ class LoRa():
     def reset(self):
         print("lora:Reset")
         GPIO.output(ResetPin, 0)
-        time.sleep(0.1)
+        sleep(0.1)
         GPIO.output(ResetPin, 1)
 
     def open(self):
@@ -49,7 +47,7 @@ class LoRa():
 
     def parse(self, line):
         fmt = '4s4s4s' + str(len(line) - 14) + 'sxx'
-        data = struct.unpack(fmt, line)
+        data = unpack(fmt, line)
         # hex2i = lambda x: int(x, 16) if int(x, 16) <= 0x7fff else ~ (0xffff - int(x, 16)) + 1
         def hex2i(x):
             if int(x, 16) <= 0x7fff:
