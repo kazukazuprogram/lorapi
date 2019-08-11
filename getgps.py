@@ -4,6 +4,7 @@
 from serial import Serial
 from micropyGPS import MicropyGPS
 import time
+import threading
 
 s = Serial('/dev/serial0', 9600, timeout=10)
 
