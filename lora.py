@@ -64,6 +64,7 @@ class LoRa():
 
 if __name__ == "__main__":
     lr = LoRa()
+    print("Main start.")
     while True:
         data = lr.parse(lr.readline())
         print(data)
