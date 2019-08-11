@@ -91,7 +91,7 @@ while (True):
                 print('TIMEOUT')
                 break
             data = lr.parse(line)  # 'rssi(4bytes),pan id(4bytes),src id(4bytes),laglng=(12バイト,12バイト)\r\n', ペイロード34バイト
-            print(data)
+            print("Data :", data)
             if 'loc=' in data[3]:
                 loc = literal_eval(data[3].split('=')[1])
                 rssi[i] = data[0]
