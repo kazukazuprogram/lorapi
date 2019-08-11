@@ -1,7 +1,7 @@
 # ソフトシリアル経由でLoRaモジュールを読む
 
 from serial import Serial
-# import RPi.GPIO as GPIO
+import RPi.GPIO as GPIO
 import struct
 import time
 
