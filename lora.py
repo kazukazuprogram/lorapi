@@ -47,6 +47,7 @@ class LoRa():
         self.s.write(msg.encode('utf-8'))
 
     def parse(self, line):
+        print("lora:parse")
         fmt = '4s4s4s' + str(len(line) - 14) + 'sxx'
         data = unpack(fmt, line)
         # hex2i = lambda x: int(x, 16) if int(x, 16) <= 0x7fff else ~ (0xffff - int(x, 16)) + 1

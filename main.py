@@ -21,6 +21,7 @@ mode = [
 lr = lora.LoRa()
 
 def printable(l):
+    print("printable")
     x = struct.unpack(str(len(l)) + 'b', l)
     y = ''
     for i in range(len(x)):
@@ -66,6 +67,10 @@ def setMode(bw, sf):
     print('LoRa module set to new mode')
     sleep(1)
     sys.stdout.flush()
+
+print("Start program,\n\n")
+
+lr.reset()
 
 while (True):
     rssi = [None] * len(mode)
