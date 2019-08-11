@@ -43,6 +43,7 @@ class LoRa():
         return line
 
     def write(self, msg):
+        print("lora:write",msg)
         self.s.write(msg.encode('utf-8'))
 
     def parse(self, line):
