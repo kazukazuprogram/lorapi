@@ -54,7 +54,7 @@ def setMode(bw, sf):
     while not ('Mode' in printable(line)):
         line = lr.readline()
         if len(line) > 0:
-            print(line)
+            print("57 :", line)
     sendcmd('2\r\n')
     sendcmd('bw %d\r\n' % bw)
     sendcmd('sf %d\r\n' % sf)
