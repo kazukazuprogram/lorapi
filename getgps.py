@@ -7,7 +7,7 @@ import time
 
 s = Serial('/dev/serial0', 9600, timeout=10)
 
-gps = micropyGPS.MicropyGPS(9, 'dd')
+gps = MicropyGPS(9, 'dd')
 
 def rungps(): # GPSモジュールを読み、GPSオブジェクトを更新する
     s.readline() # 最初の1行は中途半端なデーターが読めることがあるので、捨てる
