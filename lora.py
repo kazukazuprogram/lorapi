@@ -65,4 +65,4 @@ if __name__ == "__main__":
     print("Main start.")
     while True:
         data = lr.parse(lr.readline())
-        print(data)
+        print("Data :", data)
