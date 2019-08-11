@@ -9,7 +9,7 @@ ResetPin = 12
 
 class LoRa():
     def __init__(self):
-        print("Setup __init__()")
+        print("lora:Setup __init__()")
         GPIO.setmode(GPIO.BOARD)
         GPIO.setwarnings(False)
         GPIO.setup(ResetPin, GPIO.OUT)
@@ -17,18 +17,18 @@ class LoRa():
         self.s = Serial('/dev/serial1', 115200) # シリアルポートを115200kbps, 8bit, Non parity, 1 stop-bitでオープン
 
     def reset(self):
-        print("Reset")
+        print("lora:Reset")
         GPIO.output(ResetPin, 0)
         time.sleep(0.1)
         GPIO.output(ResetPin, 1)
 
     def open(self):
-        print("Serial Open", end="")
+        print("lora:Serial Open", end="")
         self.s.open()
         print("ed")
 
     def close(self):
-        print("Serial Close", end="")
+        print("lora:Serial Close", end="")
         self.s.close()
         print("d")
 
