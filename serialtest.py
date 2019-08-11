@@ -3,7 +3,11 @@
 from serial import Serial
 import RPi.GPIO as GPIO
 
-s = Serial('/dev/serial1', 115200)
+s = Serial('/dev/serial0', 115200)
+
+fp = open("./console_log", "w")
 
 while True:
-    print(s.readline())
+    r = s.readline()
+    print(r)
+    fp.write(r)
