@@ -5,6 +5,9 @@ from serial import Serial
 from micropyGPS import MicropyGPS
 import time
 import threading
+from json import dumps
+
+interval = 1
 
 s = Serial('/dev/serial0', 9600, timeout=10)
 
@@ -26,14 +29,24 @@ gpsthread.start() # スレッドを起動
 while True:
     if gps.clean_sentences > 20: # ちゃんとしたデーターがある程度たまったら出力する
         h = gps.timestamp[0] if gps.timestamp[0] < 24 else gps.timestamp[0] - 24
-        print('%2d:%02d:%04.1f' % (h, gps.timestamp[1], gps.timestamp[2]))
-        print('緯度経度: %2.8f, %2.8f' % (gps.latitude[0], gps.longitude[0]))
-        print('海抜: %f' % gps.altitude)
-        print(gps.satellites_used)
-        print('衛星番号: (仰角, 方位角, SN比)')
-        for k, v in gps.satellite_data.items():
-            print('%d: %s' % (k, v))
-        print('')
+        # print('%2d:%02d:%04.1f' % (h, gps.timestamp[1], gps.timestamp[2]))
+        # print('緯度経度: %2.8f, %2.8f' % (gps.latitude[0], gps.longitude[0]))
+        # print('海抜: %f' % gps.altitude)
+        # print(gps.satellites_used)
+        # print('衛星番号: (仰角, 方位角, SN比)')
+        # for k, v in gps.satellite_data.items():
+        #     print('%d: %s' % (k, v))
+        # print('')
+        data = {
+            "lat" : "{:.7f}".format(gps.latitude[0]),
+            "long" : "{:.7f}".format(gps.longitude[0])
+        }
+        print('緯度経度:   lat:{}, long:{}'.format(data[lat], data[long]))
+        # dumps(data)
+        data = "lat:{} long:{}\n".format(data[lat], data[long])
+        print(data)
+        with open(join(".", "gps.txt"), "a") as fp:
+            fp.write(data)
     else:
         print("Data not sufficient.")
-    time.sleep(3.0)
+    time.sleep(interval)
