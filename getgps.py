@@ -40,9 +40,12 @@ while True:
         # print('')
         data = {
             "lat" : "{:.7f}".format(gps.latitude[0]),
-            "long" : "{:.7f}".format(gps.longitude[0]),
-            "alt" : "{:.7f}".format(gps.altitude[0])
+            "long" : "{:.7f}".format(gps.longitude[0])
         }
+        try:
+            data["alt"] = "{:.7f}".format(gps.altitude[0])
+        except TypeError:
+            data["alt"] = gps.altitude[0]
         print('緯度経度:  lat:{}, long:{}, alt:{}'.format(data["lat"], data["long"], data["alt"]))
         data = "lat:{} long:{} alt:{}\n".format(data["lat"], data["long"], data["alt"])
         with open(join(".", "gps.txt"), "a") as fp:
