@@ -45,7 +45,6 @@ while True:
         print('緯度経度:   lat:{}, long:{}'.format(data["lat"], data["long"]))
         # dumps(data)
         data = "lat:{} long:{}\n".format(data["lat"], data["long"])
-        print(data)
         with open(join(".", "gps.txt"), "a") as fp:
             fp.write(data)
     else:
