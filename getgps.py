@@ -6,6 +6,7 @@ from micropyGPS import MicropyGPS
 import time
 import threading
 from json import dumps
+from os.path import join
 
 interval = 1
 
