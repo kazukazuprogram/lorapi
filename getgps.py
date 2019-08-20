@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 #coding: utf-8
-# 
+#
 from serial import Serial
 from micropyGPS import MicropyGPS
 import time
@@ -8,7 +8,7 @@ import threading
 from json import dumps
 from os.path import join
 
-interval = 1
+interval = 60*5
 
 s = Serial('/dev/serial0', 9600, timeout=10)
 
