@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 #coding: utf-8
-
+# 
 from serial import Serial
 from micropyGPS import MicropyGPS
 import time
